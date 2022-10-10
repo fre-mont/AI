@@ -17,12 +17,15 @@ lr.fit(X,y)
 
 # 사용자의 입력값을 받아, 모델로 예측하기 
 x_new = float(input("아파트 면적을 입력하세요: "))
-pred = float(lr.predict([[x_new]]))
-print(f'아파트 가격은 {pred:0.2f}입니다')
+pred = lr.predict([[x_new]])
 
-# 시각화 
-# W = lr.coef_
-# b = lr.intercept_
-# plt.scatter(X, y, color='red')
-# plt.plot(X, W*X+b, color='black')
-# plt.show()
+# 결과 화면 출력
+print(f'아파트 가격은 {float(pred):0.2f}입니다')
+
+# 그래프 시각화 
+W = lr.coef_ 
+b = lr.intercept_
+plt.scatter(x_new, pred)
+plt.scatter(X, y, color='red')
+plt.plot(X, W*X+b, color='black')
+plt.show()
